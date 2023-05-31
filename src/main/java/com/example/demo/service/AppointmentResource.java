@@ -18,31 +18,31 @@ public class AppointmentResource {
         this.appointmentService = appointmentService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public ResponseEntity<List<Appointment>> getAllAppointments() {
         List<Appointment> appointments = appointmentService.getAllAppointments();
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Appointment> getAppointmentById(@PathVariable("id") Long id) {
         Appointment appointment = appointmentService.getAppointment(id);
         return new ResponseEntity<>(appointment, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/")
     public ResponseEntity<Appointment> createAppointment(@RequestBody Appointment appointment) {
         Appointment newAppointment = appointmentService.createAppointment(appointment);
         return new ResponseEntity<>(newAppointment, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/")
     public ResponseEntity<Appointment> updateAppointment(@RequestBody Appointment appointment) {
         Appointment newAppointment = appointmentService.updateAppointment(appointment);
         return new ResponseEntity<>(newAppointment, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteAppointment(@PathVariable("id") Long id) {
         appointmentService.deleteAppointment(id);
         return new ResponseEntity<>(HttpStatus.OK);
